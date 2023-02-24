@@ -48,6 +48,14 @@ namespace FormStrutture
             listView1.Clear();
             Visualizza(p);
         }
+        private void ext_Click(object sender, EventArgs e)
+        {
+            var rispExt = MessageBox.Show("È sicuro di voler terminare l'applicazione?", "Uscita programma", MessageBoxButtons.YesNo);
+            if (rispExt == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
         #endregion
 
         #region Funzioni servizio

@@ -37,6 +37,7 @@
             this.agg = new System.Windows.Forms.Button();
             this.canc = new System.Windows.Forms.Button();
             this.mod = new System.Windows.Forms.Button();
+            this.ext = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -120,11 +121,22 @@
             this.mod.Text = "Modifica";
             this.mod.UseVisualStyleBackColor = true;
             // 
+            // ext
+            // 
+            this.ext.Location = new System.Drawing.Point(140, 162);
+            this.ext.Name = "ext";
+            this.ext.Size = new System.Drawing.Size(114, 23);
+            this.ext.TabIndex = 9;
+            this.ext.Text = "Uscita";
+            this.ext.UseVisualStyleBackColor = true;
+            this.ext.Click += new System.EventHandler(this.ext_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ext);
             this.Controls.Add(this.mod);
             this.Controls.Add(this.canc);
             this.Controls.Add(this.agg);
@@ -152,6 +164,7 @@
         private System.Windows.Forms.Button agg;
         private System.Windows.Forms.Button canc;
         private System.Windows.Forms.Button mod;
+        private System.Windows.Forms.Button ext;
     }
 }
 
