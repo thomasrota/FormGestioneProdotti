@@ -109,6 +109,7 @@
             this.canc.TabIndex = 7;
             this.canc.Text = "Cancella";
             this.canc.UseVisualStyleBackColor = true;
+            this.canc.Click += new System.EventHandler(this.canc_Click);
             // 
             // mod
             // 
