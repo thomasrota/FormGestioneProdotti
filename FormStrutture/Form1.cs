@@ -46,6 +46,10 @@ namespace FormStrutture
         {
             CancellaS(prodinpt.Text, p, ref dim);
         }
+        private void mod_Click(object sender, EventArgs e)
+        {
+            Modifica(modprin.Text, float.Parse(modprezzin.Text), p);
+        }
         private void ext_Click(object sender, EventArgs e)
         {
             var rispExt = MessageBox.Show("È sicuro di voler terminare l'applicazione?", "Uscita programma", MessageBoxButtons.YesNo);
@@ -105,6 +109,25 @@ namespace FormStrutture
                     listView1.Clear();
                     Visualizza(p);
                     MessageBox.Show("Elemento eliminato correttamente!");
+                }
+            }
+        }
+        public void Modifica(string e, float pos, prodotto[] p)
+        {
+            var rispMod = MessageBox.Show("È sicuro di voler modificare l'elemento?", "Conferma modifica elemento", MessageBoxButtons.YesNo);
+            if (rispMod == DialogResult.Yes)
+            {
+                if (RicercaS(prodinpt.Text, p) == -1)
+                {
+                    MessageBox.Show("Elemento non trovato!", "Errore!");
+                }
+                else
+                {
+                    p[RicercaS(prodinpt.Text, p)].nome = e;
+                    p[RicercaS(prodinpt.Text, p)].prezzo = pos;
+                    listView1.Clear();
+                    Visualizza(p);
+                    MessageBox.Show("Elemento modificato correttamente!");
                 }
             }
         }
