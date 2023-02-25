@@ -45,8 +45,6 @@ namespace FormStrutture
         private void canc_Click(object sender, EventArgs e)
         {
             CancellaS(prodinpt.Text, p, ref dim);
-            listView1.Clear();
-            Visualizza(p);
         }
         private void ext_Click(object sender, EventArgs e)
         {
@@ -99,11 +97,13 @@ namespace FormStrutture
                 }
                 else
                 {
-                    for (int j = 0; j < dim - 1; j++)
+                    for (int j = RicercaS(prodinpt.Text, p); j < dim - 1; j++)
                     {
                         p[j] = p[j + 1];
                     }
                     dim--;
+                    listView1.Clear();
+                    Visualizza(p);
                     MessageBox.Show("Elemento eliminato correttamente!");
                 }
             }
