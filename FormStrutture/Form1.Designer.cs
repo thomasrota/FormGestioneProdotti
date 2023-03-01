@@ -43,6 +43,7 @@
             this.modprezzin = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.sommap = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -179,11 +180,22 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Prezzo:";
             // 
+            // sommap
+            // 
+            this.sommap.Location = new System.Drawing.Point(17, 326);
+            this.sommap.Name = "sommap";
+            this.sommap.Size = new System.Drawing.Size(114, 23);
+            this.sommap.TabIndex = 15;
+            this.sommap.Text = "Somma prodotti";
+            this.sommap.UseVisualStyleBackColor = true;
+            this.sommap.Click += new System.EventHandler(this.sommap_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.sommap);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.modprezzin);
@@ -223,6 +235,7 @@
         private System.Windows.Forms.TextBox modprezzin;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button sommap;
     }
 }
 

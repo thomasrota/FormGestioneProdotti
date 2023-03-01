@@ -20,6 +20,7 @@ namespace FormStrutture
         }
         public prodotto[] p;
         public int dim;
+        public float somma;
         #endregion
         #region Funzioni evento
         public Form1()
@@ -49,6 +50,10 @@ namespace FormStrutture
         private void mod_Click(object sender, EventArgs e)
         {
             Modifica(modprin.Text, float.Parse(modprezzin.Text), p);
+        }
+        private void sommap_Click(object sender, EventArgs e)
+        {
+            SommaProdotti(ref dim);
         }
         private void ext_Click(object sender, EventArgs e)
         {
@@ -130,6 +135,14 @@ namespace FormStrutture
                     MessageBox.Show("Elemento modificato correttamente!");
                 }
             }
+        }
+        public void SommaProdotti(ref int dim)
+        {
+            for (int i = 0; i < dim; i++)
+            {
+                somma += p[i].prezzo;
+            }
+            MessageBox.Show($"La somma dei prezzi dei prodotti è di {somma}€","Somma prodotti");
         }
         #endregion
     }
