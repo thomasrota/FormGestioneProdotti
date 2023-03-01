@@ -44,6 +44,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.sommap = new System.Windows.Forms.Button();
+            this.modprezzoperc = new System.Windows.Forms.TextBox();
+            this.modprezzo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -182,7 +184,7 @@
             // 
             // sommap
             // 
-            this.sommap.Location = new System.Drawing.Point(17, 326);
+            this.sommap.Location = new System.Drawing.Point(140, 351);
             this.sommap.Name = "sommap";
             this.sommap.Size = new System.Drawing.Size(114, 23);
             this.sommap.TabIndex = 15;
@@ -190,11 +192,30 @@
             this.sommap.UseVisualStyleBackColor = true;
             this.sommap.Click += new System.EventHandler(this.sommap_Click);
             // 
+            // modprezzoperc
+            // 
+            this.modprezzoperc.Location = new System.Drawing.Point(17, 324);
+            this.modprezzoperc.Name = "modprezzoperc";
+            this.modprezzoperc.Size = new System.Drawing.Size(114, 20);
+            this.modprezzoperc.TabIndex = 16;
+            // 
+            // modprezzo
+            // 
+            this.modprezzo.Location = new System.Drawing.Point(15, 351);
+            this.modprezzo.Name = "modprezzo";
+            this.modprezzo.Size = new System.Drawing.Size(116, 23);
+            this.modprezzo.TabIndex = 17;
+            this.modprezzo.Text = "Modifica prezzo";
+            this.modprezzo.UseVisualStyleBackColor = true;
+            this.modprezzo.Click += new System.EventHandler(this.modprezzo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.modprezzo);
+            this.Controls.Add(this.modprezzoperc);
             this.Controls.Add(this.sommap);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -236,6 +257,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button sommap;
+        private System.Windows.Forms.TextBox modprezzoperc;
+        private System.Windows.Forms.Button modprezzo;
     }
 }
 

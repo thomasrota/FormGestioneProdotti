@@ -51,6 +51,10 @@ namespace FormStrutture
         {
             Modifica(modprin.Text, float.Parse(modprezzin.Text), p);
         }
+        private void modprezzo_Click(object sender, EventArgs e)
+        {
+            VariazionePrezzo(ref dim, float.Parse(modprezzoperc.Text));
+        }
         private void sommap_Click(object sender, EventArgs e)
         {
             SommaProdotti(ref dim);
@@ -68,7 +72,7 @@ namespace FormStrutture
         #region Funzioni servizio
         public string prodString(prodotto p)
         {
-            return "Nome: " + p.nome + " prezzo: " + p.prezzo.ToString();
+            return "Nome: " + p.nome + " prezzo: " + p.prezzo.ToString("0.00");
         }
         public void Visualizza(prodotto[] p)
         {
@@ -145,6 +149,22 @@ namespace FormStrutture
                 somma += p[i].prezzo;
             }
             MessageBox.Show($"La somma dei prezzi dei prodotti è di {somma.ToString("0.00")}€","Somma prodotti");
+        }
+        public void VariazionePrezzo(ref int dim, float perc)
+        {
+            var modPr = MessageBox.Show("È sicuro di voler modificare il prezzo dell'elemento (in base alla percentuale)?", "Conferma modifica prezzo elemento", MessageBoxButtons.YesNo);
+            if (modPr == DialogResult.Yes)
+            {
+                float modprod = 0;
+                for (int i = 0; i < dim; i++)
+                {
+                    modprod = p[i].prezzo + (p[i].prezzo * perc / 100);
+                    p[i].prezzo = modprod;
+                }
+                listView1.Clear();
+                Visualizza(p);
+                MessageBox.Show("Prezzo dell'elemento modificato correttamente!");
+            }
         }
         #endregion
     }
