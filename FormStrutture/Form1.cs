@@ -138,6 +138,7 @@ namespace FormStrutture
         }
         public void SommaProdotti(ref int dim)
         {
+            somma = 0;
             for (int i = 0; i < dim; i++)
             {
                 somma += p[i].prezzo;
