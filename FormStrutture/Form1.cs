@@ -119,6 +119,7 @@ namespace FormStrutture
         }
         public void Modifica(string e, float pos, prodotto[] p)
         {
+            int psx = RicercaS(prodinpt.Text, p);
             var rispMod = MessageBox.Show("È sicuro di voler modificare l'elemento?", "Conferma modifica elemento", MessageBoxButtons.YesNo);
             if (rispMod == DialogResult.Yes)
             {
@@ -128,8 +129,8 @@ namespace FormStrutture
                 }
                 else
                 {
-                    p[RicercaS(prodinpt.Text, p)].nome = e;
-                    p[RicercaS(prodinpt.Text, p)].prezzo = pos;
+                    p[psx].nome = e;
+                    p[psx].prezzo = pos;
                     listView1.Clear();
                     Visualizza(p);
                     MessageBox.Show("Elemento modificato correttamente!");
@@ -143,7 +144,7 @@ namespace FormStrutture
             {
                 somma += p[i].prezzo;
             }
-            MessageBox.Show($"La somma dei prezzi dei prodotti è di {somma}€","Somma prodotti");
+            MessageBox.Show($"La somma dei prezzi dei prodotti è di {somma.ToString("0.00")}€","Somma prodotti");
         }
         #endregion
     }
