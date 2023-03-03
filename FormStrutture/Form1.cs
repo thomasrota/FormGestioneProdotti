@@ -60,6 +60,26 @@ namespace FormStrutture
         {
             SommaProdotti(dim);
         }
+        private void recupera_Click(object sender, EventArgs e)
+        {
+            string path = @"ListaProdotti.csv";
+            using (StreamReader sr = File.OpenText(path))
+            {
+                string s;
+
+                if (!File.Exists(path))
+                {
+                    MessageBox.Show("Il file non è stato creato!");
+                }
+                else
+                {
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        listView1.Items.Add(s);
+                    }
+                }
+            }
+        }
         private void savetofile_Click(object sender, EventArgs e)
         {
             string path = @"ListaProdotti.csv";

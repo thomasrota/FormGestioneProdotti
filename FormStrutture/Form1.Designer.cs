@@ -219,6 +219,7 @@
             this.recupera.TabIndex = 19;
             this.recupera.Text = "Recupera lista da file";
             this.recupera.UseVisualStyleBackColor = true;
+            this.recupera.Click += new System.EventHandler(this.recupera_Click);
             // 
             // savetofile
             // 
