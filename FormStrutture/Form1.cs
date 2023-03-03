@@ -22,6 +22,7 @@ namespace FormStrutture
         public prodotto[] p;
         public int dim;
         public float somma;
+        public string path = @"ListaProdotti.csv";
         #endregion
         #region Funzioni evento
         public Form1()
@@ -62,34 +63,38 @@ namespace FormStrutture
         }
         private void recupera_Click(object sender, EventArgs e)
         {
-            string path = @"ListaProdotti.csv";
             using (StreamReader sr = File.OpenText(path))
             {
                 string s;
 
                 if (!File.Exists(path))
                 {
-                    MessageBox.Show("Il file non è stato creato!");
+                    MessageBox.Show("Il file non esiste!", "Errore!");
                 }
                 else
                 {
                     while ((s = sr.ReadLine()) != null)
                     {
-                        listView1.Items.Add(s);
+                        string[] parts = s.Split(';');
+                        string nome = parts[0];
+                        float prezzo = float.Parse(parts[1]);
+                        p[dim].nome = nome;
+                        p[dim].prezzo = prezzo;
+                        dim++;
+                        Visualizza(p);
                     }
                 }
             }
         }
         private void savetofile_Click(object sender, EventArgs e)
         {
-            string path = @"ListaProdotti.csv";
             if (!File.Exists(path))
             {
                 using (StreamWriter sw = File.CreateText(path))
                 {
                     for (int i = 0; i < dim; i++)
                     {
-                        sw.WriteLine($"{p[i].nome}; {p[i].prezzo.ToString("0.00")}€");
+                        sw.WriteLine($"{p[i].nome}; {p[i].prezzo.ToString("0.00")}");
                     }
                     MessageBox.Show("File creato correttamente!");
                 }
@@ -100,7 +105,7 @@ namespace FormStrutture
                 {
                     for (int i = 0; i < dim; i++)
                     {
-                        sw.WriteLine($"{p[i].nome}; {p[i].prezzo.ToString("0.00")}€");
+                        sw.WriteLine($"{p[i].nome}; {p[i].prezzo.ToString("0.00")}");
                     }
                 }
             }
@@ -113,7 +118,7 @@ namespace FormStrutture
                 var savefile = MessageBox.Show("Salvare modifiche alla lista?", "Salvataggio lista", MessageBoxButtons.YesNo);
                 if (savefile == DialogResult.No)
                 {
-                    File.Delete("ListaProdotti.csv");
+                    File.Delete(path);
                 }
                 Application.Exit();
             }
