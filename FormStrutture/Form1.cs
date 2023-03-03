@@ -54,11 +54,11 @@ namespace FormStrutture
         }
         private void modprezzo_Click(object sender, EventArgs e)
         {
-            VariazionePrezzo(ref dim, float.Parse(modprezzoperc.Text));
+            VariazionePrezzo(dim, float.Parse(modprezzoperc.Text));
         }
         private void sommap_Click(object sender, EventArgs e)
         {
-            SommaProdotti(ref dim);
+            SommaProdotti(dim);
         }
         private void savetofile_Click(object sender, EventArgs e)
         {
@@ -111,17 +111,13 @@ namespace FormStrutture
         }
         public int RicercaS(string e, prodotto[] p)
         {
-            int risultatoricerca = 0;
+            int risultatoricerca = -1;
             for (int i = 0; i < p.Length; i++)
             {
                 if (p[i].nome == e)
                 {
                     risultatoricerca = i;
                     break;
-                }
-                else
-                {
-                    risultatoricerca = -1;
                 }
             }
             return risultatoricerca;
@@ -131,18 +127,18 @@ namespace FormStrutture
             var rispCanc = MessageBox.Show("È sicuro di voler eliminare l'elemento?", "Conferma rimozione elemento", MessageBoxButtons.YesNo);
             if (rispCanc == DialogResult.Yes)
             {
-                if (RicercaS(prodinpt.Text, p) == -1)
+                int search = RicercaS(prodinpt.Text, p);
+                if (search == -1)
                 {
                     MessageBox.Show("Elemento non trovato!", "Errore!");
                 }
                 else
                 {
-                    for (int j = RicercaS(prodinpt.Text, p); j < dim - 1; j++)
+                    for (int j = search; j < dim - 1; j++)
                     {
                         p[j] = p[j + 1];
                     }
                     dim--;
-                    listView1.Clear();
                     Visualizza(p);
                     MessageBox.Show("Elemento eliminato correttamente!");
                 }
@@ -154,7 +150,7 @@ namespace FormStrutture
             var rispMod = MessageBox.Show("È sicuro di voler modificare l'elemento?", "Conferma modifica elemento", MessageBoxButtons.YesNo);
             if (rispMod == DialogResult.Yes)
             {
-                if (RicercaS(prodinpt.Text, p) == -1)
+                if (psx == -1)
                 {
                     MessageBox.Show("Elemento non trovato!", "Errore!");
                 }
@@ -168,7 +164,7 @@ namespace FormStrutture
                 }
             }
         }
-        public void SommaProdotti(ref int dim)
+        public void SommaProdotti(int dim)
         {
             somma = 0;
             for (int i = 0; i < dim; i++)
@@ -177,18 +173,15 @@ namespace FormStrutture
             }
             MessageBox.Show($"La somma dei prezzi dei prodotti è di {somma.ToString("0.00")}€", "Somma prodotti");
         }
-        public void VariazionePrezzo(ref int dim, float perc)
+        public void VariazionePrezzo(int dim, float perc)
         {
             var modPr = MessageBox.Show("È sicuro di voler modificare il prezzo dell'elemento (in base alla percentuale)?", "Conferma modifica prezzo elemento", MessageBoxButtons.YesNo);
             if (modPr == DialogResult.Yes)
             {
-                float modprod = 0;
                 for (int i = 0; i < dim; i++)
                 {
-                    modprod = p[i].prezzo + (p[i].prezzo * perc / 100);
-                    p[i].prezzo = modprod;
+                    p[i].prezzo = p[i].prezzo + (p[i].prezzo * perc / 100);
                 }
-                listView1.Clear();
                 Visualizza(p);
                 MessageBox.Show("Prezzo dell'elemento modificato correttamente!");
             }
