@@ -90,7 +90,11 @@ namespace FormStrutture
             var rispExt = MessageBox.Show("È sicuro di voler terminare l'applicazione?", "Uscita programma", MessageBoxButtons.YesNo);
             if (rispExt == DialogResult.Yes)
             {
-                File.Delete("ListaProdotti.csv");
+                var savefile = MessageBox.Show("Salvare modifiche alla lista?", "Salvataggio lista", MessageBoxButtons.YesNo);
+                if (savefile == DialogResult.No)
+                {
+                    File.Delete("ListaProdotti.csv");
+                }
                 Application.Exit();
             }
         }
@@ -109,10 +113,10 @@ namespace FormStrutture
                 listView1.Items.Add(prodString(p[i]));
             }
         }
-        public int RicercaS(string e, prodotto[] p)
+        public int RicercaS(string e, prodotto[] p, int dim)
         {
             int risultatoricerca = -1;
-            for (int i = 0; i < p.Length; i++)
+            for (int i = 0; i < dim; i++)
             {
                 if (p[i].nome == e)
                 {
@@ -127,7 +131,7 @@ namespace FormStrutture
             var rispCanc = MessageBox.Show("È sicuro di voler eliminare l'elemento?", "Conferma rimozione elemento", MessageBoxButtons.YesNo);
             if (rispCanc == DialogResult.Yes)
             {
-                int search = RicercaS(prodinpt.Text, p);
+                int search = RicercaS(prodinpt.Text, p, dim);
                 if (search == -1)
                 {
                     MessageBox.Show("Elemento non trovato!", "Errore!");
@@ -146,7 +150,7 @@ namespace FormStrutture
         }
         public void Modifica(string e, float pos, prodotto[] p)
         {
-            int psx = RicercaS(prodinpt.Text, p);
+            int psx = RicercaS(prodinpt.Text, p, dim);
             var rispMod = MessageBox.Show("È sicuro di voler modificare l'elemento?", "Conferma modifica elemento", MessageBoxButtons.YesNo);
             if (rispMod == DialogResult.Yes)
             {
