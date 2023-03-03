@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -59,11 +60,37 @@ namespace FormStrutture
         {
             SommaProdotti(ref dim);
         }
+        private void savetofile_Click(object sender, EventArgs e)
+        {
+            string path = @"ListaProdotti.csv";
+            if (!File.Exists(path))
+            {
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    for (int i = 0; i < dim; i++)
+                    {
+                        sw.WriteLine($"{p[i].nome}; {p[i].prezzo.ToString("0.00")}€");
+                    }
+                    MessageBox.Show("File creato correttamente!");
+                }
+            }
+            else
+            {
+                using (StreamWriter sw = new StreamWriter(path, append:false))
+                {
+                    for (int i = 0; i < dim; i++)
+                    {
+                        sw.WriteLine($"{p[i].nome}; {p[i].prezzo.ToString("0.00")}€");
+                    }
+                }
+            }
+        }
         private void ext_Click(object sender, EventArgs e)
         {
             var rispExt = MessageBox.Show("È sicuro di voler terminare l'applicazione?", "Uscita programma", MessageBoxButtons.YesNo);
             if (rispExt == DialogResult.Yes)
             {
+                File.Delete("ListaProdotti.csv");
                 Application.Exit();
             }
         }
@@ -72,7 +99,7 @@ namespace FormStrutture
         #region Funzioni servizio
         public string prodString(prodotto p)
         {
-            return "Nome: " + p.nome + " prezzo: " + p.prezzo.ToString("0.00");
+            return "Nome: " + p.nome + " prezzo: " + p.prezzo.ToString("0.00") + "€";
         }
         public void Visualizza(prodotto[] p)
         {
@@ -148,7 +175,7 @@ namespace FormStrutture
             {
                 somma += p[i].prezzo;
             }
-            MessageBox.Show($"La somma dei prezzi dei prodotti è di {somma.ToString("0.00")}€","Somma prodotti");
+            MessageBox.Show($"La somma dei prezzi dei prodotti è di {somma.ToString("0.00")}€", "Somma prodotti");
         }
         public void VariazionePrezzo(ref int dim, float perc)
         {

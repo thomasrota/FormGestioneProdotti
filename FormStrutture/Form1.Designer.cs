@@ -46,6 +46,8 @@
             this.sommap = new System.Windows.Forms.Button();
             this.modprezzoperc = new System.Windows.Forms.TextBox();
             this.modprezzo = new System.Windows.Forms.Button();
+            this.recupera = new System.Windows.Forms.Button();
+            this.savetofile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -53,7 +55,7 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(472, 13);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(316, 425);
+            this.listView1.Size = new System.Drawing.Size(316, 396);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
@@ -79,10 +81,10 @@
             // 
             // prodinpt
             // 
-            this.prodinpt.Location = new System.Drawing.Point(17, 82);
+            this.prodinpt.Location = new System.Drawing.Point(17, 81);
             this.prodinpt.Name = "prodinpt";
             this.prodinpt.Size = new System.Drawing.Size(100, 20);
-            this.prodinpt.TabIndex = 3;
+            this.prodinpt.TabIndex = 18;
             // 
             // label3
             // 
@@ -209,11 +211,32 @@
             this.modprezzo.UseVisualStyleBackColor = true;
             this.modprezzo.Click += new System.EventHandler(this.modprezzo_Click);
             // 
+            // recupera
+            // 
+            this.recupera.Location = new System.Drawing.Point(472, 415);
+            this.recupera.Name = "recupera";
+            this.recupera.Size = new System.Drawing.Size(130, 23);
+            this.recupera.TabIndex = 19;
+            this.recupera.Text = "Recupera lista da file";
+            this.recupera.UseVisualStyleBackColor = true;
+            // 
+            // savetofile
+            // 
+            this.savetofile.Location = new System.Drawing.Point(658, 415);
+            this.savetofile.Name = "savetofile";
+            this.savetofile.Size = new System.Drawing.Size(130, 23);
+            this.savetofile.TabIndex = 20;
+            this.savetofile.Text = "Salva lista su file";
+            this.savetofile.UseVisualStyleBackColor = true;
+            this.savetofile.Click += new System.EventHandler(this.savetofile_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.savetofile);
+            this.Controls.Add(this.recupera);
             this.Controls.Add(this.modprezzo);
             this.Controls.Add(this.modprezzoperc);
             this.Controls.Add(this.sommap);
@@ -259,6 +282,8 @@
         private System.Windows.Forms.Button sommap;
         private System.Windows.Forms.TextBox modprezzoperc;
         private System.Windows.Forms.Button modprezzo;
+        private System.Windows.Forms.Button recupera;
+        private System.Windows.Forms.Button savetofile;
     }
 }
 
