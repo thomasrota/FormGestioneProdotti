@@ -82,8 +82,8 @@ namespace FormStrutture
                         p[dim].prezzo = prezzo;
                         dim++;
                         Visualizza(p);
-                        MessageBox.Show("Lista recuperata correttamente!");
                     }
+                    MessageBox.Show("Lista recuperata correttamente!");
                 }
             }
         }
