@@ -234,7 +234,7 @@ namespace FormStrutture
                     min = p[i].prezzo;
                 }
             }
-            MessageBox.Show($"Il prezzo più basso è di {min}€, mentre quello più alto è di {max}€");
+            MessageBox.Show($"Il prezzo più basso è di {min.ToString("0.00")}€, mentre quello più alto è di {max.ToString("0.00")}€");
         }
         #endregion
     }
