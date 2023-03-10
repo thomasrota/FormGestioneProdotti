@@ -18,6 +18,7 @@ namespace FormStrutture
         {
             public string nome;
             public float prezzo;
+            public int quantità;
         }
         public prodotto[] p;
         public int dim;
@@ -35,9 +36,27 @@ namespace FormStrutture
         {
             if (dim < p.Length)
             {
-                p[dim].nome = prodinpt.Text;
-                p[dim].prezzo = float.Parse(prezinpt.Text);
-                dim++;
+                bool esist = false;
+                int ps = 0;
+                for (int i = 0; i < dim; i++)
+                {
+                    if (prodinpt.Text == p[i].nome)
+                    {
+                        esist = true;
+                        ps = i;
+                    }
+                }
+                if (!esist)
+                {
+                    p[dim].nome = prodinpt.Text;
+                    p[dim].prezzo = float.Parse(prezinpt.Text);
+                    p[dim].quantità = 1;
+                    dim++;
+                }
+                else
+                {
+                    p[ps].quantità++;
+                }
                 Visualizza(p);
             }
             else
@@ -132,7 +151,7 @@ namespace FormStrutture
         #region Funzioni servizio
         public string prodString(prodotto p)
         {
-            return "Nome: " + p.nome + " prezzo: " + p.prezzo.ToString("0.00") + "€";
+            return "Nome: " + p.nome + " prezzo: " + p.prezzo.ToString("0.00") + "€ quantità: " + p.quantità;
         }
         public void Visualizza(prodotto[] p)
         {
