@@ -101,8 +101,10 @@ namespace FormStrutture
                         string[] parts = s.Split(';');
                         string nome = parts[0];
                         float prezzo = float.Parse(parts[1]);
+                        int quantit = int.Parse(parts[2]);
                         p[dim].nome = nome;
                         p[dim].prezzo = prezzo;
+                        p[dim].quantità = quantit;
                         dim++;
                         Visualizza(p);
                     }
@@ -118,7 +120,7 @@ namespace FormStrutture
                 {
                     for (int i = 0; i < dim; i++)
                     {
-                        sw.WriteLine($"{p[i].nome}; {p[i].prezzo.ToString("0.00")}");
+                        sw.WriteLine($"{p[i].nome}; {p[i].prezzo.ToString("0.00")}; {p[i].quantità}");
                     }
                     MessageBox.Show("File creato correttamente!");
                 }
@@ -129,7 +131,7 @@ namespace FormStrutture
                 {
                     for (int i = 0; i < dim; i++)
                     {
-                        sw.WriteLine($"{p[i].nome}; {p[i].prezzo.ToString("0.00")}");
+                        sw.WriteLine($"{p[i].nome}; {p[i].prezzo.ToString("0.00")}; {p[i].quantità}");
                     }
                 }
             }
@@ -221,7 +223,7 @@ namespace FormStrutture
             somma = 0;
             for (int i = 0; i < dim; i++)
             {
-                somma += p[i].prezzo;
+                somma += p[i].prezzo * p[i].quantità;
             }
             MessageBox.Show($"La somma dei prezzi dei prodotti è di {somma.ToString("0.00")}€", "Somma prodotti");
         }
