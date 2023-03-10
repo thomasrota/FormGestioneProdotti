@@ -61,6 +61,10 @@ namespace FormStrutture
         {
             SommaProdotti(dim);
         }
+        private void minmax_Click(object sender, EventArgs e)
+        {
+            RicercaMinMax(ref dim);
+        }
         private void recupera_Click(object sender, EventArgs e)
         {
             using (StreamReader sr = File.OpenText(path))
@@ -125,7 +129,6 @@ namespace FormStrutture
             }
         }
         #endregion
-
         #region Funzioni servizio
         public string prodString(prodotto p)
         {
@@ -215,6 +218,23 @@ namespace FormStrutture
                 Visualizza(p);
                 MessageBox.Show("Prezzo dell'elemento modificato correttamente!");
             }
+        }
+        public void RicercaMinMax(ref int dim)
+        {
+            float min = p[0].prezzo;
+            float max = p[0].prezzo;
+            for (int i = 1; i < dim; i++)
+            {
+                if (p[i].prezzo > max)
+                {
+                    max = p[i].prezzo;
+                }
+                if (p[i].prezzo < min)
+                {
+                    min = p[i].prezzo;
+                }
+            }
+            MessageBox.Show($"Il prezzo più basso è di {min}€, mentre quello più alto è di {max}€");
         }
         #endregion
     }

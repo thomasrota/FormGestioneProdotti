@@ -48,6 +48,7 @@
             this.modprezzo = new System.Windows.Forms.Button();
             this.recupera = new System.Windows.Forms.Button();
             this.savetofile = new System.Windows.Forms.Button();
+            this.minmax = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -231,11 +232,22 @@
             this.savetofile.UseVisualStyleBackColor = true;
             this.savetofile.Click += new System.EventHandler(this.savetofile_Click);
             // 
+            // minmax
+            // 
+            this.minmax.Location = new System.Drawing.Point(140, 324);
+            this.minmax.Name = "minmax";
+            this.minmax.Size = new System.Drawing.Size(114, 23);
+            this.minmax.TabIndex = 21;
+            this.minmax.Text = "Minimo/masssimo";
+            this.minmax.UseVisualStyleBackColor = true;
+            this.minmax.Click += new System.EventHandler(this.minmax_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.minmax);
             this.Controls.Add(this.savetofile);
             this.Controls.Add(this.recupera);
             this.Controls.Add(this.modprezzo);
@@ -285,6 +297,7 @@
         private System.Windows.Forms.Button modprezzo;
         private System.Windows.Forms.Button recupera;
         private System.Windows.Forms.Button savetofile;
+        private System.Windows.Forms.Button minmax;
     }
 }
 
